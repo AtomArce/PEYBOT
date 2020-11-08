@@ -6,7 +6,6 @@ Created on Sat Nov  7 13:19:23 2020
 """
 
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
@@ -50,7 +49,7 @@ while again == True:
 # ========== Navigating to the 'Search Job Postings' section ==========
 
 # Initiate the browser
-browser = webdriver.Chrome(ChromeDriverManager().install())
+browser = webdriver.Chrome(executable_path= "C:\chromedriver.exe")
 
 # Open the Website
 browser.get('https://www.uoftengcareerportal.ca/students/login.htm')
