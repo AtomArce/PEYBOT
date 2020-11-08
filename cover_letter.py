@@ -1,4 +1,7 @@
 import re
+import names
+from names import job_name
+from names import company_name
 from docx import Document
 from docx2pdf import convert
 
@@ -18,17 +21,17 @@ def docx_replace_regex(doc_obj, regex , replace):
             for cell in row.cells:
                 docx_replace_regex(cell, regex , replace)
 
-
-
 regex1 = re.compile(r"job_name")
 regex2 = re.compile(r"company_name")
-replace1 = r"Intern"
-replace2 = r"Google"
-filename = "coverletter.docx"
-doc = Document(filename)
+replace1 = job_name
+replace2 = company_name
+doc_name = "coverletter.docx"
+doc = Document(doc_name)
 docx_replace_regex(doc, regex1, replace1)
 docx_replace_regex(doc, regex2, replace2)
-doc.save('new.docx')
+file_name = "Cover Letter - "+ company_name
+doc.save(file_name + ".docx")
 
-convert("new.docx")
-convert("new.docx", "new.pdf")
+#Generates pdf file
+convert(file_name + ".docx")
+convert(file_name + ".docx", file_name + ".pdf")
